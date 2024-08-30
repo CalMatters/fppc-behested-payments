@@ -1,6 +1,7 @@
 import fs from "fs/promises";
-
+import _ from "lodash";
 import * as cheerio from "cheerio";
+import dayjs from "dayjs";
 import * as d3 from "d3-dsv";
 import Queue from "p-queue";
 
@@ -28,6 +29,8 @@ async function scrapeTableNamePerYear(name, year = "2024") {
         const col = columns[ii];
         if (col === "Amount") {
           d[col] = text.replaceAll("$", "").replaceAll(",", "");
+        } else if (col === "Payment Date") {
+          d[col] = dayjs(text).format("YYYY-MM-DD");
         } else {
           d[col] = text;
         }
@@ -62,7 +65,7 @@ async function scrapeOfficialsPerTypePerYear(officialType, year = "2024") {
 }
 
 async function scrapeAllRowsPerYear(year = "2024") {
-  console.log(`📅 Scraping everything for ${year}`)
+  console.log(`📅 Scraping everything for ${year}`);
   const officials = [];
   const queue = new Queue({ concurrency: 2 });
 
@@ -86,7 +89,7 @@ async function scrapeAllRowsPerYear(year = "2024") {
 
   await queue.onIdle();
 
-  return rows
+  return rows;
 }
 
 const types = [
@@ -111,16 +114,26 @@ const years = [
   "2024",
 ];
 
-const queue = new Queue({ concurrency: 1 })
-const rows = []
-years.forEach(year => {
+const queue = new Queue({ concurrency: 1 });
+const rows = [];
+years.forEach((year) => {
   queue.add(async () => {
-    const d = await scrapeAllRowsPerYear(year)
-    rows.push(...d)
-  })
-})
-await queue.onIdle()
+    const d = await scrapeAllRowsPerYear(year);
+    rows.push(...d);
+  });
+});
+await queue.onIdle();
 
-const csv = d3.csvFormat(rows);
+const uniq = _.uniqBy(rows, d => {
+  const pairs = _.toPairs(d)
+  const sortedPairs = _.orderBy(pairs, [d => d[0]], ['asc'])
+  const key = JSON.stringify(sortedPairs)
+  return key
+})
+const csv = d3.csvFormat(uniq);
 await fs.writeFile(`behested.csv`, csv);
-console.log(`✅ Saved behested.csv (${rows.length.toLocaleString('en-US')} rows) with all years from ${years[0]} through ${years[years.length - 1]}`)
+console.log(
+  `✅ Saved behested.csv (${
+    uniq.length.toLocaleString("en-US")
+  } rows) with all years from ${years[0]} through ${years[years.length - 1]}`,
+);

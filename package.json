@@ -12,6 +12,8 @@
   "dependencies": {
     "cheerio": "^1.0.0",
     "d3-dsv": "^3.0.1",
+    "dayjs": "^1.11.13",
+    "lodash": "^4.17.21",
     "p-queue": "^8.0.1"
   }
 }
