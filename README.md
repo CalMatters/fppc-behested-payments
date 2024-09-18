@@ -16,7 +16,7 @@ This dataset is simply one CSV with all the behested payments pulled from the co
 
 These are the columns that can be found in `behested.csv`.
 
-Columns | Description
+Column | Description
 -- | --
 Name | Official's name
 Amount | Behested payment amount
