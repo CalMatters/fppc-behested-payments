@@ -1,16 +1,16 @@
 # California Behested Payment Data
 
-The California Fair Political Practices Commission (FPPC), the state's ethics and money in politics watchdog, has [a webpage to download behested payments as an Excel file](https://www.fppc.ca.gov/transparency/form-700-filed-by-public-officials/behested-payments.html) but the data seems delayed, doesn't have all of the behested payments compared to other search tools, and has known errors.
-
-The [commission says](https://www.fppc.ca.gov/transparency/behested-payments.html) that a payment is behested if it was made:
+The California Fair Political Practices Commission (FPPC), the state's ethics and money in politics watchdog, says that a [payment is behested](https://www.fppc.ca.gov/transparency/behested-payments.html) if it was made:
 * At the request, suggestion, or solicitation of, or made in cooperation, consultation, coordination or concert with the public official; and
 * For a legislative, governmental or charitable purpose.
+
+The commission has [a webpage to download behested payments as an Excel file](https://www.fppc.ca.gov/transparency/form-700-filed-by-public-officials/behested-payments.html) but the data seems delayed and has known errors.
 
 The FPPC has a web search tool for behested payments that doesn't seem to have the same issues as the downloadable Excel file. Here's an example of the web search tool: [payments behested by Gavin Newsom in 2024](https://dv.fppc.ca.gov/Detail?Year=2024&Name=Newsom,%20Gavin).
 
 An example of a known error in the downloadable data is a $5,000,000,000 behested payment from the Waverley Street Foundation to California Volunteers in May 2024 though the FPPC's web tool for searching behested payments states that the value is $5,000,000, which makes a lot more sense and is used in this data set.
 
-This dataset spans 2011 through the present.
+This dataset is simply one CSV with all the behested payments pulled from the correct web search tool. It spans 2011 through the present.
 
 ## Data dictionary
 
