@@ -130,7 +130,8 @@ const uniq = _.uniqBy(rows, d => {
   const key = JSON.stringify(sortedPairs)
   return key
 })
-const csv = d3.csvFormat(uniq);
+const sorted = _.orderBy(uniq, ['Name','Amount','Payment Date'], ['asc', 'desc', 'asc'])
+const csv = d3.csvFormat(sorted);
 await fs.writeFile(`behested.csv`, csv);
 console.log(
   `✅ Saved behested.csv (${
