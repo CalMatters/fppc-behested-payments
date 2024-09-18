@@ -13,16 +13,16 @@ These are the columns that can be found in `behested.csv`.
 Columns | Description
 -- | --
 Name | Official's name
-Amount | Value
+Amount | Behested payment amount
 Payment Date | When the behested payment was made
 Payor | The party that gave money
-Payor City | That party's city
-Payor State | That party's state
+Payor City | The giving party's city
+Payor State | The giving party's state
 Payee | The party that got money
-Payee City | That party's city
-Payee State | That party's state
+Payee City | The receiving party's city
+Payee State | The receiving party's state
 Description | A description of the reason
-Notice Received | When the FPPC received the filing
+Notice Received | When the FPPC received the filing reported by the official
 LGC Purpose | TKTK
 
 
