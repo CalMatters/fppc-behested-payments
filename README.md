@@ -29,7 +29,7 @@ Payee City | The receiving party's city
 Payee State | The receiving party's state
 Description | A description of the reason
 Notice Received | When the FPPC received the filing reported by the official
-LGC Purpose | TKTK
+LGC Purpose | A behested payment must be for one of the following reasons: **L**egislative, **G**overmental, **C**hartiable
 
 
 ## Data use
